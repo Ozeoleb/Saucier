@@ -1,9 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
     const productGrid = document.querySelector('.product-grid');
     const cartBadge = document.getElementById('cartBadge');
-    const cartModal = document.getElementById('cartModal');
+    const modalElement = document.getElementById('cartModal');
+    const header = document.querySelector('header');
     let products = [];
     let cart = [];
+    let cartModal;
+    let lastScroll = 0;
+    const scrollThreshold = 10; // pixels
+
+
+    // Hide/show header on scroll
+    window.addEventListener('scroll', function () {
+        const currentScroll = window.pageYOffset;
+    
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
+    
+        lastScroll = currentScroll;
+    });
 
     // Fetch products from JSON file
     fetch('products.json')
@@ -112,12 +132,29 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open(whatsappUrl, '_blank');
     });
 
-    // Navigation functionality
-    document.querySelector('.cart-link').addEventListener('click', function(e) {
-        e.preventDefault();
-        const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
-        cartModal.show();
-    });
+    // Initialize cart modal
+    if (modalElement) {
+        cartModal = new bootstrap.Modal(modalElement);
+        console.log('Cart modal initialized');
+
+        // Cart link click handler
+        document.querySelector('.cart-link')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Cart link clicked');
+            cartModal.show();
+            updateCartUI(); // Refresh cart contents
+        });
+
+        // Floating cart button click handler
+        document.getElementById('floatingCart')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Floating cart clicked');
+            cartModal.show();
+            updateCartUI();
+        });
+    } else {
+        console.error('Cart modal element not found');
+    }
 
     // Category filtering
     function filterProducts(category) {
@@ -140,5 +177,4 @@ document.addEventListener('DOMContentLoaded', function() {
             filterProducts(e.target.dataset.category);
         }
     });
-
 });
