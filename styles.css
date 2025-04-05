@@ -30,7 +30,7 @@ header {
 /* Hero Section */
 .hero-section {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('images/sauces_backgroundss.png') center/cover no-repeat;
+                url('images/sauces_background.png') center/cover no-repeat;
     min-height: 60vh;
     display: flex;
     align-items: center;
