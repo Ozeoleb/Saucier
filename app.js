@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Fetch products from JSON file
-    fetch('https://drive.google.com/uc?export=download&id=1WvPjG3N59Gz3eUMKjyQNmpinhRAQRdpl')
+    fetch('products.json')
         .then(response => response.json())
         .then(data => {
             products = data;
