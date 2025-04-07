@@ -3,7 +3,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: #333;
-    background: url('images/Sauces_Background.png') no-repeat center center fixed;
+    background: url('images/bac2.jpg') no-repeat center center fixed;
     background-size: cover;
     position: relative;
 }
@@ -30,7 +30,7 @@ header {
 /* Hero Section */
 .hero-section {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                url('images/sauces_background.png') center/cover no-repeat;
+                url('images/bac1.jpg') center/cover no-repeat;
     min-height: 60vh;
     display: flex;
     align-items: center;
