@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Fetch products from JSON file
-    fetch('products.json')
+    fetch('https://drive.google.com/file/d/1WvPjG3N59Gz3eUMKjyQNmpinhRAQRdpl/view?usp=sharing')
         .then(response => response.json())
         .then(data => {
             products = data;
